@@ -1,8 +1,10 @@
 Rails.application.routes.draw do  
-  post '/movies/search' => 'movies#search' 
   root 'movies#index'
-  resources :movies
-
+  resources :movies do 
+    collection do
+      get 'search'
+  end
+end
 
   
 

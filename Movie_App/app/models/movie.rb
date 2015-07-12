@@ -3,6 +3,9 @@ class Movie < ActiveRecord::Base
 end
 
 def self.search(search)
-  where("title LIKE ?", "%#{search}%") 
-  where("year_released LIKE ?", "%#{search}%")
+  if search
+    where('title LIKE ?', "%#{search}%")
+  else
+    scoped
+  end
 end
